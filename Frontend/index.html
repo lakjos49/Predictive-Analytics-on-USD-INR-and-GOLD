@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rate Prediction Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen p-4"
+  >
+    <!-- Main Container -->
+    <div
+      class="w-full max-w-4xl bg-gray-800 rounded-2xl shadow-2xl p-8 space-y-10"
+    >
+      <header class="text-center space-y-2">
+        <h1 class="text-4xl font-extrabold text-white">
+          Rate Prediction Dashboard
+        </h1>
+        <p class="text-lg text-gray-400">
+          Get predictions for Gold and USD/INR rates.
+        </p>
+      </header>
+
+      <!-- --- Point Prediction Section --- -->
+      <div class="bg-gray-700 rounded-xl p-6 shadow-lg">
+        <h2
+          class="text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2"
+        >
+          Point Prediction
+        </h2>
+
+        <div
+          class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4"
+        >
+          <input
+            type="date"
+            id="single-date-input"
+            class="flex-grow w-full sm:w-auto p-3 rounded-lg bg-gray-900 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          />
+          <button
+            id="predict-button"
+            class="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200"
+          >
+            Predict Rates
+          </button>
+        </div>
+
+        <!-- Prediction Results Display -->
+        <div
+          id="prediction-results"
+          class="mt-6 p-4 bg-gray-900 rounded-lg text-gray-300"
+        >
+          <p>Results will appear here.</p>
+        </div>
+        <div
+          id="loading-spinner-single"
+          class="hidden mt-4 flex items-center justify-center space-x-2"
+        >
+          <svg
+            class="animate-spin h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          <span>Predicting...</span>
+        </div>
+      </div>
+
+      <!-- --- Future Trend Plot Section --- -->
+      <div class="bg-gray-700 rounded-xl p-6 shadow-lg">
+        <h2
+          class="text-2xl font-bold text-white mb-4 border-b border-gray-600 pb-2"
+        >
+          Future Trend Plot
+        </h2>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-end"
+        >
+          <div class="flex flex-col space-y-2">
+            <label for="start-date-input" class="text-gray-300"
+              >Start Date</label
+            >
+            <input
+              type="date"
+              id="start-date-input"
+              class="p-3 rounded-lg bg-gray-900 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            />
+          </div>
+          <div class="flex flex-col space-y-2">
+            <label for="end-date-input" class="text-gray-300">End Date</label>
+            <input
+              type="date"
+              id="end-date-input"
+              class="p-3 rounded-lg bg-gray-900 text-gray-100 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            />
+          </div>
+          <button
+            id="plot-button"
+            class="mt-auto w-full px-6 py-3 bg-green-600 text-white font-bold rounded-lg shadow-md hover:bg-green-700 transition-colors duration-200"
+          >
+            Generate Plot
+          </button>
+        </div>
+
+        <!-- Plot Image Display -->
+        <div
+          id="plot-container"
+          class="mt-6 p-4 bg-gray-900 rounded-lg flex justify-center items-center h-96 overflow-hidden"
+        >
+          <p class="text-gray-400">The plot will appear here.</p>
+        </div>
+        <div
+          id="loading-spinner-plot"
+          class="hidden mt-4 flex items-center justify-center space-x-2"
+        >
+          <svg
+            class="animate-spin h-5 w-5 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+          <span>Generating plot...</span>
+        </div>
+      </div>
+    </div>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
